@@ -1,16 +1,17 @@
 export default function Results({ data }){
   return (
     <section className="bg-white">
-      <div className="max-w-5xl mx-auto px-6 py-12">
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
-          <div className="rounded-2xl overflow-hidden border border-slate-200">
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
+          <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
             <img src={data.package_image_url} alt="Personalized supplement pack" className="w-full h-full object-cover" />
           </div>
           <div>
-            <h3 className="text-2xl font-semibold text-slate-900 tracking-tight">Your recommended stack</h3>
+            <h3 className="text-3xl font-semibold text-slate-900 tracking-tight">Your recommended stack</h3>
+            <p className="mt-2 text-slate-600">Tailored picks with clear doses and sources. Save or purchase when ready.</p>
             <ul className="mt-6 space-y-5">
               {data.recommendations.map((r)=> (
-                <li key={r.name} className="rounded-xl border border-slate-200 p-4">
+                <li key={r.name} className="rounded-2xl border border-slate-200 p-5 hover:shadow-sm transition">
                   <div className="flex items-baseline justify-between gap-4">
                     <div>
                       <div className="font-medium text-slate-900">{r.name}</div>

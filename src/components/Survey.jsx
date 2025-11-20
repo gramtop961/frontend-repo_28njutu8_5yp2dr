@@ -22,7 +22,7 @@ function Scale({ value, onChange }){
           key={n}
           type="button"
           onClick={() => onChange(n)}
-          className={`h-10 w-10 rounded-full border transition ${value===n? 'bg-blue-600 border-blue-600 text-white':'border-slate-300 text-slate-600 hover:border-blue-400'}`}
+          className={`h-11 w-11 rounded-xl border transition ${value===n? 'bg-blue-600 border-blue-600 text-white':'border-slate-300 text-slate-600 hover:border-blue-400 hover:bg-blue-50'}`}
         >{n}</button>
       ))}
     </div>
@@ -66,7 +66,6 @@ export default function Survey({ onComplete }){
     })
     const data = await res.json()
 
-    // send email in background if provided
     if(answers.email){
       fetch(`${import.meta.env.VITE_BACKEND_URL}/send-email`,{
         method:'POST', headers:{'Content-Type':'application/json'},
@@ -79,18 +78,19 @@ export default function Survey({ onComplete }){
 
   return (
     <section className="bg-white">
-      <div className="max-w-2xl mx-auto px-6 py-10">
+      <div className="max-w-xl mx-auto px-6 py-12">
         <div className="mb-6 text-sm text-slate-500">Step {step+1} of {total}</div>
         <h2 className="text-2xl font-semibold text-slate-900 tracking-tight">{current.label}</h2>
+        <p className="mt-2 text-slate-500 text-sm">Rate 1–5 where 5 means you want the most help.</p>
         <div className="mt-6">
           {current.type==='scale' && (
             <Scale value={answers[current.key]} onChange={v=>setValue(current.key, v)} />
           )}
           {current.type==='text' && (
-            <input value={answers.country} onChange={e=>setValue('country', e.target.value)} placeholder="e.g., United Kingdom" className="w-full border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <input value={answers.country} onChange={e=>setValue('country', e.target.value)} placeholder="e.g., United Kingdom" className="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
           )}
           {current.type==='email' && (
-            <input type="email" value={answers.email} onChange={e=>setValue('email', e.target.value)} placeholder="you@example.com" className="w-full border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <input type="email" value={answers.email} onChange={e=>setValue('email', e.target.value)} placeholder="you@example.com" className="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
           )}
         </div>
 
@@ -103,13 +103,13 @@ export default function Survey({ onComplete }){
 
           {step < total-1 ? (
             <button
-              className="px-6 py-3 rounded-full bg-blue-600 text-white disabled:opacity-50"
+              className="px-6 py-3 rounded-full bg-blue-600 text-white disabled:opacity-50 shadow-sm hover:shadow"
               disabled={!canNext}
               onClick={()=> canNext && setStep(s=>Math.min(total-1,s+1))}
             >Next</button>
           ):(
             <button
-              className="px-6 py-3 rounded-full bg-blue-600 text-white"
+              className="px-6 py-3 rounded-full bg-blue-600 text-white shadow-sm hover:shadow"
               onClick={finish}
             >See my plan</button>
           )}

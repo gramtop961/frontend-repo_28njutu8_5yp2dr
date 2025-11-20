@@ -6,7 +6,7 @@ import Survey from './components/Survey'
 import { useState } from 'react'
 import Results from './components/Results'
 
-function Home({ onStart }){
+function Home(){
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/80 border-b border-slate-200">
@@ -20,7 +20,7 @@ function Home({ onStart }){
         <section className="bg-white">
           <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="text-3xl font-semibold tracking-tight">Personalized recommendations. Only from real research.</h2>
+              <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">Personalized recommendations. Only from real research.</h2>
               <p className="mt-4 text-slate-600 leading-relaxed">
                 Your health isn’t one‑size‑fits‑all. SuppAI creates a supplement plan based solely on university‑level research and meta‑analyses. No fads, no hype—just clear guidance tailored to your goals and region.
               </p>
@@ -33,7 +33,7 @@ function Home({ onStart }){
                 <Link to="/survey" className="inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-6 py-3 shadow-sm hover:shadow-md transition-all">Start Survey</Link>
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 p-6 bg-slate-50">
+            <div className="rounded-2xl border border-slate-200 p-6 bg-gradient-to-br from-blue-50 to-white">
               <div className="h-64 w-full rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 grid place-items-center text-blue-800">Clean, friendly visuals</div>
             </div>
           </div>
